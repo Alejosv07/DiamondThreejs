@@ -11,6 +11,7 @@ import { OrbitControls } from "three/addons/controls/OrbitControls.js";
     0.1,
     100
   );
+
   camera.position.z = 3;
 
   scene.add(camera);
@@ -35,6 +36,23 @@ import { OrbitControls } from "three/addons/controls/OrbitControls.js";
   };
 
   tick();
+
+
+  //Lights
+  const naturalLights = new THREE.AmbientLight();
+  scene.add(naturalLights);
+
+
+  //Mesh and relative
+  const octaGeo = new THREE.OctahedronGeometry(1,3);
+
+  const material = new THREE.MeshStandardMaterial();
+
+  const mesh = new THREE.Mesh(octaGeo,material);
+
+  scene.add(mesh);
+
+
 
   w.addEventListener("resize", (event) => {
     scene.updateMatrix();
